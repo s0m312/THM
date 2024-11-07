@@ -1,0 +1,9 @@
+nmap revealed port 22,80,110,143  (port 80 revealed an osint hint, so i looked on google for it and found this clue: https://github.com/berzerk0/Fowsniff/blob/main/fowsniff.txt#L19C1-L27C49 )
+cracked the passes on crackstation and ran metasploit module 'auxiliary/scanner/pop3/pop3_login'
+seina:scoobydoo2 came back possitive, 
+by looking threw the mails, the admin gave them default new ssh pass, 'S1ck3nBluff+secureshell'
+by taking all the users names he sent to, i've ran a bruteforce to see who it matches,
+baksteen:S1ck3nBluff+secureshell
+linpeas and by enumerating the groups a file popped up, /opt/cube/cube.sh , turns out he run as root by other file called '/etc/update-motd.d/00-header' as soon as someone logs into ssh.
+took a python reverse shell by 'Pentest Monkeys' and added to the 'cube.sh' file (at the end)
+opened listener and re-logged in into the ssh and a root shell spawned.
